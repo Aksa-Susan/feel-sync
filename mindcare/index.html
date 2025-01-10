@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyslexia Support for Parents</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('./dy.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            line-height: 1.8;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: rgba(0, 10, 0, 0.741);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 28px; /* Reduced font size for the main header */
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 22px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #000700;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            font-size: 22px;
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+
+        .play-btn {
+            background-color: #010e01;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background-color: #000701;
+        }
+
+        .activity-buttons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .activity-buttons button {
+            background-color: #000a01;
+            color: white;
+            padding: 20px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .activity-buttons button:hover {
+            background-color: #000d01;
+        }
+
+        .more-resources {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .more-resources a {
+            color: #2200ff;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .container img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .activity-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .activity-buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="font-size: 38px;">Support for Parents of Children with Dyslexia</h1>
+        </header>
+
+        <section>
+            <h2>What is Dyslexia?</h2>
+            <p>Dyslexia is a learning difficulty that affects reading, writing, and spelling abilities. It is important for parents to understand the signs, interventions, and exercises to help their children.</p>
+        </section>
+
+        <section>
+            <h2>Signs of Dyslexia</h2>
+            <ul>
+                <li>Difficulty reading or spelling words correctly.</li>
+                <li>Reversing letters or numbers.</li>
+                <li>Slow or delayed reading skills.</li>
+                <li>Difficulty following written instructions.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>What Can Parents Do?</h2>
+            <p>Parents can support their children by providing phonics-based games, regular reading, and building a structured learning environment.</p>
+        </section>
+
+        <section>
+            <h2>Suggested Exercises and Activities</h2>
+            <div class="activity-buttons">
+                <button onclick="window.location.href='words.html'">Play Jumbled Words</button>
+                <button onclick="window.location.href='read.html'">Reading Comprehension</button>
+                <button onclick="window.location.href='spell.html'">Spelling & Word Matching</button>
+            </div>
+        </section>
+
+        <section class="more-resources">
+            <h2>More Resources</h2>
+            <p>
+                <span style="color: #2200ff;">For more tips and resources on supporting children with dyslexia..Visit</span>, 
+                <a href="https://www.understood.org" target="_blank">Understood.org</a>.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

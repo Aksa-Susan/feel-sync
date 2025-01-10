@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling and Word Matching Game</title>
+    <style>
+        /* Ensure full page usage */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('./bg5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 3em;
+            color: #4caf50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            margin: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .card.correct {
+            background-color: #4caf50;
+            color: white;
+            box-shadow: 0 6px 18px rgba(0, 255, 0, 0.3);
+        }
+
+        .card.incorrect {
+            background-color: #f44336;
+            color: white;
+            box-shadow: 0 6px 18px rgba(255, 0, 0, 0.3);
+        }
+
+        .card.highlighted {
+            background-color: #ffeb3b; /* Highlight color */
+        }
+
+        .btn {
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            padding: 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Popup image styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .popup img {
+            width: 130px;
+            height: 130px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .popup-button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-button:hover {
+            background-color: #45a049;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Spelling and Word Matching Game</h1>
+    <div class="message" id="message"></div>
+    <div class="game-container" id="game-container">
+        <!-- Cards for Words -->
+    </div>
+    <button class="btn" onclick="resetGame()">Start New Game</button>
+
+    <!-- Popup Image -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <img src="" alt="Image" id="popup-image">
+        <p id="popup-text"></p>
+        <button class="popup-button" onclick="closePopup()">Continue</button>
+    </div>
+
+    <script>
+        const wordPairs = [
+            { word: "cat", spelling: "cat", image: "./cat.jpeg" },
+            { word: "dog", spelling: "dog", image: "./dog.jpeg" },
+            { word: "apple", spelling: "apple", image: "./apple.jpg" },
+            { word: "bird", spelling: "bird", image: "./bird.jpg" },
+            { word: "fish", spelling: "fish", image: "./fish.jpg" },
+            { word: "moon", spelling: "moon", image: "./moon.jpg" },
+            { word: "sun", spelling: "sun", image: "./sun.jpg" },
+            { word: "star", spelling: "star", image: "./star.webp" }
+        ];
+
+        let gameContainer = document.getElementById("game-container");
+        let message = document.getElementById("message");
+        let popup = document.getElementById("popup");
+        let overlay = document.getElementById("overlay");
+        let popupImage = document.getElementById("popup-image");
+        let popupText = document.getElementById("popup-text");
+
+        // Shuffle function for randomizing the game cards
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        // Function to display the game
+        function displayGame() {
+            gameContainer.innerHTML = "";
+            let allCards = [...wordPairs, ...wordPairs]; // Duplicate the word pairs for matching
+            shuffleArray(allCards);
+
+            allCards.forEach((pair, index) => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.textContent = pair.word;
+                card.setAttribute("data-spelling", pair.spelling);
+                card.setAttribute("data-matched", "false");
+                card.setAttribute("data-image", pair.image);
+                card.setAttribute("data-index", index);
+                card.onclick = handleCardClick;
+                gameContainer.appendChild(card);
+            });
+        }
+
+        let firstCard = null;
+        let secondCard = null;
+
+        // Handle card click
+        function handleCardClick(e) {
+            const clickedCard = e.target;
+
+            if (clickedCard.getAttribute("data-matched") === "true") {
+                return; // Ignore already matched cards
+            }
+
+            // Highlight clicked card
+            clickedCard.classList.add("highlighted");
+            clickedCard.textContent = clickedCard.getAttribute("data-spelling"); // Show the spelling of the word
+            clickedCard.style.pointerEvents = "none"; // Disable further clicks on this card
+
+            if (!firstCard) {
+                firstCard = clickedCard;
+                return;
+            }
+
+            secondCard = clickedCard;
+
+            if (firstCard.getAttribute("data-spelling") === secondCard.getAttribute("data-spelling")) {
+                // Correct match
+                firstCard.classList.add("correct");
+                secondCard.classList.add("correct");
+                firstCard.setAttribute("data-matched", "true");
+                secondCard.setAttribute("data-matched", "true");
+                message.textContent = "Good job! You found a match!";
+                message.style.color = "#4caf50";
+
+                // Show the popup image for correct match
+                showPopup(firstCard.getAttribute("data-image"), firstCard.getAttribute("data-spelling"));
+
+                resetClick();
+            } else {
+                // Incorrect match
+                message.textContent = "Oops! Try again.";
+                message.style.color = "#f44336";
+                setTimeout(() => {
+                    firstCard.textContent = firstCard.getAttribute("data-word");
+                    secondCard.textContent = secondCard.getAttribute("data-word");
+                    firstCard.style.pointerEvents = "auto";
+                    secondCard.style.pointerEvents = "auto";
+                    firstCard.classList.remove("highlighted");
+                    secondCard.classList.remove("highlighted");
+                    resetClick();
+                }, 1000);
+            }
+        }
+
+        // Show the popup with image and text
+        function showPopup(imageUrl, word) {
+            popupImage.src = imageUrl;
+            popupText.textContent = `You matched the word: ${word}`;
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        }
+
+        // Close the popup and continue the game
+        function closePopup() {
+            overlay.style.display = "none";
+            popup.style.display = "none";
+        }
+
+        // Reset the first and second card references
+        function resetClick() {
+            firstCard = null;
+            secondCard = null;
+        }
+
+        // Start a new game
+        function resetGame() {
+            message.textContent = "";
+            displayGame();
+        }
+
+        // Initialize the game
+        displayGame();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonics Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Phonics Practice</h1>
+            <p>Click on a letter to hear its sound.</p>
+        </header>
+
+        <section>
+            <div class="phonics-container">
+                <button onclick="playPhonics('a')">A</button>
+                <button onclick="playPhonics('b')">B</button>
+                <button onclick="playPhonics('c')">C</button>
+                <button onclick="playPhonics('d')">D</button>
+                <button onclick="playPhonics('e')">E</button>
+                <button onclick="playPhonics('f')">F</button>
+                <button onclick="playPhonics('g')">G</button>
+                <button onclick="playPhonics('h')">H</button>
+                <button onclick="playPhonics('i')">I</button>
+                <button onclick="playPhonics('j')">J</button>
+                <button onclick="playPhonics('k')">K</button>
+                <button onclick="playPhonics('l')">L</button>
+                <button onclick="playPhonics('m')">M</button>
+                <button onclick="playPhonics('n')">N</button>
+                <button onclick="playPhonics('o')">O</button>
+                <button onclick="playPhonics('p')">P</button>
+                <button onclick="playPhonics('q')">Q</button>
+                <button onclick="playPhonics('r')">R</button>
+                <button onclick="playPhonics('s')">S</button>
+                <button onclick="playPhonics('t')">T</button>
+                <button onclick="playPhonics('u')">U</button>
+                <button onclick="playPhonics('v')">V</button>
+                <button onclick="playPhonics('w')">W</button>
+                <button onclick="playPhonics('x')">X</button>
+                <button onclick="playPhonics('y')">Y</button>
+                <button onclick="playPhonics('z')">Z</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function playPhonics(letter) {
+            const phonicsSounds = {
+                'a': 'https://www.boomplay.com/songs/62696960?srModel=COPYLINK&srList=WEB', // Replace with phonics sound file links
+                'b': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                'c': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+                'd': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+                'e': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+                'f': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+                'g': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+                'h': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+                'i': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+                'j': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+                'k': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3',
+                'l': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',
+                'm': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3',
+                'n': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',
+                'o': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
+                'p': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3',
+                'q': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3',
+                'r': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-18.mp3',
+                's': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-19.mp3',
+                't': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-20.mp3',
+                'u': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-21.mp3',
+                'v': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-22.mp3',
+                'w': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-23.mp3',
+                'x': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-24.mp3',
+                'y': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-25.mp3',
+                'z': 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-26.mp3'
+            };
+            
+            const sound = new Audio(phonicsSounds[letter]);
+            sound.play();
+        }
+    </script>
+</body>
+</html>

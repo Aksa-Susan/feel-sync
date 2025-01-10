@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Comprehension</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #060606;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            color: #622e04;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .passage {
+            background-color: rgba(255, 255, 255, 0.5); /* More transparent */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .passage img {
+            border-radius: 8px;
+            margin-right: 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .passage img:hover {
+            transform: scale(1.1);
+        }
+
+        .passage h3 {
+            font-size: 1.4em;
+            color: #5e2c04;
+        }
+
+        /* Question Section */
+        .question-container {
+            background: rgba(255, 255, 255, 0.6); /* More transparent */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            max-width: 80%;
+            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .question-container h3 {
+            font-size: 1.2em;
+            color: #783007;
+        }
+
+        .choices {
+            margin-top: 10px;
+            font-size: 1em;
+        }
+
+        .choices label {
+            display: block;
+            margin-bottom: 8px;
+            color: #090909;
+        }
+
+        .choices input {
+            margin-right: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .result button {
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #3c6e71;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .result button:hover {
+            background-color: #2e4f43;
+            transform: translateY(-2px);
+        }
+
+        .result.correct {
+            color: green;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .result.incorrect {
+            color: red;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Additional gap between questions */
+        .question-container + .question-container {
+            margin-top: 40px;
+        }
+
+        /* Video background */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .passage, .question-container {
+                padding: 15px;
+            }
+
+            .passage img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .result button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="./bg4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h1>Reading Comprehension Practice</h1>
+
+    <!-- Passage Section -->
+    <div class="passage">
+        <img src="./cat.jpeg" alt="Cute Cat Image">
+        <div>
+            <h3>Passage:</h3>
+            <p id="passage">
+                A cat is a small domesticated carnivorous mammal. It is often kept as a pet. Cats are known for their independent nature and their ability to catch mice and other small animals. They are also known for their agility and hunting skills. Most cats are kept indoors, but some enjoy going outside to explore their surroundings.
+            </p>
+        </div>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="question-container">
+        <h3>Question 1:</h3>
+        <p>What is a cat known for?</p>
+        <div class="choices">
+            <label><input type="radio" name="question1" value="1"> Its ability to sing</label>
+            <label><input type="radio" name="question1" value="2"> Its ability to catch mice</label>
+            <label><input type="radio" name="question1" value="3"> Its ability to fly</label>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <h3>Question 2:</h3>
+        <p>Where do most cats live?</p>
+        <div class="choices">
+            <label><input type="radio" name="question2" value="1"> In the wild</label>
+            <label><input type="radio" name="question2" value="2"> Indoors</label>
+            <label><input type="radio" name="question2" value="3"> On trees</label>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="result">
+        <button onclick="checkAnswers()">Submit Answers</button>
+    </div>
+
+    <!-- Result -->
+    <div id="resultMessage" class="result"></div>
+
+    <script>
+        function checkAnswers() {
+            let resultMessage = document.getElementById('resultMessage');
+            let correctAnswers = 0;
+
+            // Question 1
+            const question1Answer = document.querySelector('input[name="question1"]:checked');
+            if (question1Answer && question1Answer.value == '2') {
+                correctAnswers++;
+            }
+
+            // Question 2
+            const question2Answer = document.querySelector('input[name="question2"]:checked');
+            if (question2Answer && question2Answer.value == '2') {
+                correctAnswers++;
+            }
+
+            // Display result message
+            if (correctAnswers === 2) {
+                resultMessage.innerHTML = '<span class="correct">Great job! You answered all questions correctly.</span>';
+            } else if (correctAnswers === 1) {
+                resultMessage.innerHTML = '<span class="incorrect">You got 1 out of 2 questions right. Keep practicing!</span>';
+            } else {
+                resultMessage.innerHTML = '<span class="incorrect">You didn\'t get any answers correct. Try again!</span>';
+            }
+        }
+    </script>
+
+</body>
+</html>
