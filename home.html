@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeelSync</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Image and Heading Container */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Adjust height as needed */
+        }
+
+        /* Background Image */
+        .hero-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire container */
+        }
+
+        /* Heading and Tagline */
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Heading Styles */
+        .hero-text h1 {
+            font-family: 'Georgia', serif;
+            font-size: 4em;
+            color: #000000;
+            margin: 0;
+        }
+
+        /* Tagline Styles */
+        .hero-text p {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            color: #000000;
+            margin-top: 10px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 50px;
+            color: #4c6a92;
+        }
+
+        /* Section Content */
+        .section-content {
+            margin: 20px;
+            font-size: 2em;
+            color: #444;
+        }
+
+        /* Flex Container for Sections */
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        /* Image Styling */
+        .flex-container img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        /* Content with Image on the Left */
+        .left-image .content {
+            margin-left: 20px;
+            max-width: 600px;
+        }
+
+        /* Content with Image on the Right */
+        .right-image .content {
+            margin-right: 20px;
+            max-width: 600px;
+        }
+
+        /* Button Styles */
+        .content a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #4c6a92;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .content a:hover {
+            background-color: #3a5270;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <img src="FR12.jpg" alt="Background Image"> <!-- Replace with your image path -->
+        <div class="hero-text">
+            <h1>FeelSync</h1>
+            <p>Your Emotional Health Companion</p>
+        </div>
+    </div>
+
+    <!-- Mood Tracker & Mental Health Analysis Section -->
+    <div class="flex-container left-image">
+        <img src="img1.webp" alt="Mood Icon"> <!-- Replace with your image path -->
+        <div class="content">
+            <!-- Heading with inline style for font size and color -->
+            <h2 style="font-size: 2.25em; color: #010101;">MoodSync: Track, Reflect, and Transform Your Emotional Well-Being</h2>
+    
+            <!-- Paragraph with inline style for font size and color -->
+            <p style="font-size: 1em; color: #555555;">Track your emotions, reflect on your moods, and receive personalized activities and exercises to boost your emotional health. FeelSync’s mood tracker helps you understand and improve your mental well-being.</p>
+    
+            <!-- Link with inline style for font size, color, background color, and hover effect -->
+            <a href="moodsync.html" style="font-size: 1em; color: #fff; background-color: #4c6a92; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Learn More</a>
+        </div>
+    </div>
+    
+
+    <!-- ADHD Task Management for Kids Section -->
+<div class="flex-container right-image">
+    <div class="content">
+        <!-- Heading with inline style for font size and color -->
+        <h2 style="font-size: 2.25em; color: #010101;">FocusBoost: Empowering ADHD Kids to Stay on Track</h2>
+
+        <!-- Paragraph with inline style for font size and color -->
+        <p style="font-size: 1em; color: #555555;">Helping kids with ADHD stay focused and organized. With TaskMaster, they can manage their tasks and routines easily, leading to a more structured and productive day.</p>
+
+        <!-- Link with inline style for font size, color, background color, and hover effect -->
+        <a href="focusboost.html" style="font-size: 1em; color: #fff; background-color: #4c6a92; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Learn More</a>
+    </div>
+    <img src="img2.jpg" alt="Focus Icon"> <!-- Replace with your image path -->
+</div>
+
+
+    <!-- Dyslexia Support for Kids Section -->
+<div class="flex-container left-image">
+    <img src="img3.avif" alt="Read Icon"> <!-- Replace with your image path -->
+    <div class="content">
+        <!-- Heading with inline style for font size and color -->
+        <h2 style="font-size: 2.25em; color: #010101;">ReadEasy: Empowering Dyslexic Kids with Confidence</h2>
+
+        <!-- Paragraph with inline style for font size and color -->
+        <p style="font-size: 1em; color: #555555;">ReadEasy helps children with dyslexia improve their reading and comprehension skills in a fun, engaging way. With personalized resources, children gain confidence in their literacy journey.</p>
+
+        <!-- Link with inline style for font size, color, background color, and hover effect -->
+        <a href="readeasy.html" style="font-size: 1em; color: #fff; background-color: #4c6a92; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Learn More</a>
+    </div>
+</div>
+
+</body>
+</html>
