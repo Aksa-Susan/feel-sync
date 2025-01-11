@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Analyzer</title>
+    <style>
+        /* Global Styles */
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 550px; /* You can adjust the height as per requirement */
+            margin-bottom: 10px; /* Space between video and first section */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Center Aligning the headings */
+        h1, h2 {
+            color: #00796b;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 70px; /* Increased space between sections */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .nature-sounds-section {
+    background-image: url('images/Colorful Watercolor Floral Background Instagram Story.png');
+    max-width: 800px; /* Decrease the width */
+    margin: 0 auto; /* Center align the section */
+    padding: 20px;
+}
+
+
+        /* Breathing Exercise Section */
+.breathing-exercise-section {
+    background-image: url('images/Brown Pastel Watercolor Flower Aesthetic Background Instagram Story.png');
+    max-width: 800px; /* Decrease the width of the section */
+    margin: 60px auto 0; /* Add more space above and center it */
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+}
+
+
+        .mood-music-section {
+            background-image: url('images/Blue and White Floral Watercolor Phone Wallpaper.png');
+            max-width: 800px; /* Decrease the width of the section */
+    margin: 60px auto 0; /* Add more space above and center it */
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+        }
+     /* Stress Mention Section */
+.stress-mention-section {
+    background-image: url('images/Dusty Blue Cream Motivational Floral Vintage Phone Wallpaper.png'); /* Add background image */
+    background-size: cover; /* Ensure the background image covers the section */
+    background-position: center; /* Center the background image */
+    max-width: 800px; /* Make the width smaller */
+    margin: 60px auto 0; /* Center the section and add space above */
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for appearance */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+        /* Circle shaped images for nature sounds */
+        .audio-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid #00796b;
+            transition: transform 0.3s ease;
+        }
+
+        .audio-image:hover {
+            transform: scale(1.1);
+        }
+         /* MindFriend Interaction Section */
+        .mindfriend-interaction-section {
+            background-color: #f0f4f4; /* Light background */
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .mindfriend-interaction-section h2 {
+            color: #00796b;
+        }
+
+        .mindfriend-interaction-section p {
+            color: #555;
+        }
+
+        .gif-container img {
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gif-container img:hover {
+            transform: scale(1.05);
+        }
+
+
+
+
+        .back-button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .back-button:hover {
+            background-color: #004d40;
+        }
+
+        .mood-selector-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            iframe {
+                height: 300px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src='images/Colorful Simple Illustrative Identifying Signs of Mental Health Presentation.mp4' type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1>Mental Health Analyzer</h1>
+     
+
+    <!-- MindFriend Interaction Section -->
+    <div class="section mindfriend-interaction-section">
+        <h2>Interact with MindFriend</h2>
+        <p>Chat with MindFriend, an AI chatbot, to help you manage your stress and emotions. It’s here to listen and guide you toward a more relaxed and calm state.</p>
+
+        <!-- GIF Image that links to Poe.com -->
+        <div class="gif-container">
+            <img src="images/dancebot3.gif" alt="MindFriend Chatbot" onclick="window.open('https://poe.com/MindFriend', '_blank')">
+        </div>
+    </div>
+
+    <!-- Nature Sounds Section -->
+    <div class="section nature-sounds-section">
+        <h2>Listen to Nature Sounds</h2>
+        <p>Relax with soothing sounds of nature to help you clear your mind.</p>
+
+        <!-- Circular images representing different nature sounds -->
+        <div style="text-align: center;">
+            <img src='images/bird.jpg' alt="Bird Chirping" class="audio-image" onclick="toggleAudio('bird')">
+            <img src="images/what_is_a_river.jpg" alt="River Sound" class="audio-image" onclick="toggleAudio('river')">
+            <img src="images/what-is-rain-960x640.jpg" alt="Rain Sound" class="audio-image" onclick="toggleAudio('rain')">
+        </div>
+    </div>
+
+    <!-- Breathing Exercise Section -->
+    <div class="section breathing-exercise-section">
+        <h2>Breathing Exercise</h2>
+        <p>Take a deep breath in, hold it for a few seconds, and then exhale slowly.</p>
+        <a href="https://poe.com/MindFriend" target="_blank">Chat with Us</a>
+        <iframe src="https://xhalr.com/" width="800" height="600"></iframe>
+        <div id="breathing-instruction" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Music Based on Mood Section -->
+    <div class="section mood-music-section">
+        <h2>Music According to Your Mood</h2>
+        <p>Select your current mood, and we'll suggest music to help you feel better.</p>
+        <div class="mood-selector-container">
+            <select id="mood-selector" class="mood-selector">
+                <option value="calm">Calm</option>
+                <option value="happy">Happy</option>
+                <option value="energized">Energized</option>
+            </select>
+            <button onclick="playMoodMusic()">Play Music</button>
+        </div>
+        
+        <audio id="mood-music" class="audio-player" controls>
+            <source id="mood-music-source" src="" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    
+
+     <!-- Stress Mention Section -->
+     <div class="section stress-mention-section">
+        <h2>Stress...?</h2>
+        <p>Mention down your stressful task and find a way to release your stress.</p>
+        <body><iframe src="https://www.pixelthoughts.co/" width="800" height="700"></iframe></body>
+    </div>
+
+
+    
+
+   
+
+    <br>
+    <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+
+    <script>
+        // Audio tracks for nature sounds
+        const birdSound = new Audio('bird-chirping.mp3');
+        const riverSound = new Audio('river-sound.mp3');
+        const rainSound = new Audio('rain-sound.mp3');
+
+        // Function to toggle audio play/pause when image is clicked
+        function toggleAudio(sound) {
+            // Stop all audio players
+            birdSound.pause();
+            riverSound.pause();
+            rainSound.pause();
+
+            // Reset all audio players to the start
+            birdSound.currentTime = 0;
+            riverSound.currentTime = 0;
+            rainSound.currentTime = 0;
+
+            // Toggle play/pause for the clicked audio
+            if (sound === 'bird') {
+                birdSound.paused ? birdSound.play() : birdSound.pause();
+            } else if (sound === 'river') {
+                riverSound.paused ? riverSound.play() : riverSound.pause();
+            } else if (sound === 'rain') {
+                rainSound.paused ? rainSound.play() : rainSound.pause();
+            }
+        }
+
+        // Function for Breathing Exercise
+        function startBreathingExercise() {
+            // Show the iframe for breathing exercise
+            document.getElementById("breathing-instruction").innerHTML = "Follow the instructions in the iframe above.";
+        }
+
+        // Function to play music based on mood
+        function playMoodMusic() {
+            const mood = document.getElementById("mood-selector").value;
+            const audio = document.getElementById("mood-music");
+            const musicSource = document.getElementById("mood-music-source");
+
+            if (mood === "calm") {
+                musicSource.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+            } else if (mood === "happy") {
+                musicSource.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3";
+            } else if (mood === "energized") {
+                musicSource.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3";
+            }
+            
+            audio.load(); // Reload the audio element with the new source
+            audio.play();
+        }
+
+        // Function to start a stress-relieving game
+        function startStressRelievingGame() {
+            alert("Game coming soon! Stay tuned for some stress-relieving activities.");
+        }
+    </script>
+
+</body>
+</html>
