@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHD Aid</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="header">
+    <h1>Mindpace</h1>
+    <h2>Specially generated for people suffering from ADHD</h2>
+  </div>
+
+  <!-- Horizontal Table for Icons -->
+  <div class="icons-row">
+    <div class="icon-item" data-id="task-manager">
+      <img src="{{ url_for('static', filename='images/task-icon.png') }}" alt="Task Manager Icon" class="section-icon" />
+      <h2>Task Manager</h2>
+    </div>
+    <div class="icon-item" data-id="focus-timer">
+      <img src="{{ url_for('static', filename='images/timer.jpg') }}" alt="Focus Timer Icon" class="section-icon" />
+      <h2>Focus Timer</h2>
+    </div>
+    <div class="icon-item" data-id="notes">
+      <img src="{{ url_for('static', filename='images/notes-icon.png') }}" alt="Notes Icon" class="section-icon" />
+      <h2>Notes</h2>
+    </div>
+    <div class="icon-item" data-id="calendar-schedules">
+      <img src="{{ url_for('static', filename='images/calender.png') }}" alt="Calendar & Schedule Icon" class="section-icon" />
+      <h2>Calendar & Schedules</h2>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="app-container">
+    <div class="section" id="task-manager-section">
+      <div class="section-content">
+        <h2>Task Manager</h2>
+        <ul id="task-list"></ul>
+        <input type="text" id="task-input" placeholder="Enter a task" />
+        <button id="add-task">Add Task</button>
+      </div>
+    </div>
+
+    <!-- Replaced Focus Timer section with Pomofocus iframe -->
+    <div class="section" id="focus-timer-section">
+      <div class="section-content">
+        <h2>Pomofocus Timer</h2>
+        <iframe src="https://pomofocus.io/" width="600" height="400" style="border:none;"></iframe>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="section" id="notes-section">
+      <div class="section-content">
+        <h2>Notes</h2>
+        <textarea id="note-input" placeholder="Write a quick note..."></textarea>
+        <button id="save-note">Save Note</button>
+        <ul id="notes-list"></ul>
+      </div>
+    </div>
+
+    <!-- Iframe Section Below Notes -->
+    <div class="section" id="iframe-section">
+      <div class="section-content">
+        <h2>Tools</h2>
+        <iframe src="https://www.rapidtables.com/" width="600" height="400" style="border:none;"></iframe>
+      </div>
+    </div>
+
+    <!-- Calendar & Schedules Section -->
+    <div class="section" id="calendar-schedules-section">
+      <div class="section-content">
+        <h2>Calendar & Schedules</h2>
+        <p>Manage your calendar and schedule events here.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

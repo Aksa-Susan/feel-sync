@@ -3,178 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Check-In</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FeelSync</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Image and Heading Container */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Adjust height as needed */
+        }
+
+        /* Background Image */
+        .hero-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire container */
+        }
+
+        /* Heading and Tagline */
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Heading Styles */
+        .hero-text h1 {
+            font-family: 'Georgia', serif;
+            font-size: 4em;
+            color: #000000;
+            margin: 0;
+        }
+
+        /* Tagline Styles */
+        .hero-text p {
+            font-family: 'Georgia', serif;
+            font-size: 1.5em;
+            color: #000000;
+            margin-top: 10px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 50px;
+            color: #4c6a92;
+        }
+
+        /* Section Content */
+        .section-content {
+            margin: 20px;
+            font-size: 2em;
+            color: #444;
+        }
+
+        /* Flex Container for Sections */
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        /* Image Styling */
+        .flex-container img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        /* Content with Image on the Left */
+        .left-image .content {
+            margin-left: 20px;
+            max-width: 600px;
+        }
+
+        /* Content with Image on the Right */
+        .right-image .content {
+            margin-right: 20px;
+            max-width: 600px;
+        }
+
+        /* Button Styles */
+        .content a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #4c6a92;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .content a:hover {
+            background-color: #3a5270;
+        }
+
+        /* Sign Up and Login Buttons Container */
+        .auth-buttons {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .auth-buttons a {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #4c6a92;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #3a5270;
+        }
+    </style>
 </head>
 <body>
-    <div id="survey">
-        <h1>Daily Mental Health Check-In</h1>
-        <form id="checkin-form">
-            <!-- Question 1 -->
-            <label>1)How are you feeling today?</label>
-            <div class="button-group" data-question="feeling">
-                <button type="button" data-value="good">Good</button>
-                <button type="button" data-value="bad">Bad</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
 
-            <!-- Question 2 -->
-            <label>2)What's your mood like?</label>
-            <div class="button-group" data-question="mood">
-                <button type="button" data-value="happy">Happy</button>
-                <button type="button" data-value="sad">Sad</button>
-                <button type="button" data-value="stressed">Stressed</button>
-            </div>
-
-            <!-- Question 3 -->
-            <label>3)How much stress are you feeling today?</label>
-            <div class="button-group" data-question="stress">
-                <button type="button" data-value="none">None</button>
-                <button type="button" data-value="low">Low</button>
-                <button type="button" data-value="high">High</button>
-            </div>
-
-            <!-- Question 4 -->
-            <label>4)How well did you sleep last night?</label>
-            <div class="button-group" data-question="sleep">
-                <button type="button" data-value="well">Well</button>
-                <button type="button" data-value="average">Average</button>
-                <button type="button" data-value="poorly">Poorly</button>
-            </div>
-
-            <!-- Question 5 -->
-            <label>5)Are you feeling physically energized?</label>
-            <div class="button-group" data-question="energy">
-                <button type="button" data-value="energized">Energized</button>
-                <button type="button" data-value="tired">Tired</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 6 -->
-            <label>6)Have you been able to focus today?</label>
-            <div class="button-group" data-question="focus">
-                <button type="button" data-value="yes">Yes</button>
-                <button type="button" data-value="no">No</button>
-                <button type="button" data-value="somewhat">Somewhat</button>
-            </div>
-
-            <!-- Question 7 -->
-            <label>7)Do you feel supported by those around you?</label>
-            <div class="button-group" data-question="support">
-                <button type="button" data-value="yes">Yes</button>
-                <button type="button" data-value="no">No</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 8 -->
-            <label>8)How do you feel about your work or studies today?</label>
-            <div class="button-group" data-question="work">
-                <button type="button" data-value="productive">Productive</button>
-                <button type="button" data-value="unproductive">Unproductive</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 9 -->
-            <label>9)How satisfied are you with your physical health?</label>
-            <div class="button-group" data-question="physical_health">
-                <button type="button" data-value="satisfied">Satisfied</button>
-                <button type="button" data-value="unsatisfied">Unsatisfied</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 10 -->
-            <label>10)Are you experiencing any anxiety today?</label>
-            <div class="button-group" data-question="anxiety">
-                <button type="button" data-value="none">None</button>
-                <button type="button" data-value="mild">Mild</button>
-                <button type="button" data-value="severe">Severe</button>
-            </div>
-
-            <!-- Question 11 -->
-            <label>11)How would you rate your happiness today?</label>
-            <div class="button-group" data-question="happiness">
-                <button type="button" data-value="happy">Happy</button>
-                <button type="button" data-value="neutral">Neutral</button>
-                <button type="button" data-value="unhappy">Unhappy</button>
-            </div>
-
-            <!-- Question 12 -->
-            <label>12)Are you feeling connected with others?</label>
-            <div class="button-group" data-question="connected">
-                <button type="button" data-value="connected">Connected</button>
-                <button type="button" data-value="isolated">Isolated</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 13 -->
-            <label>13)How often do you feel overwhelmed?</label>
-            <div class="button-group" data-question="overwhelmed">
-                <button type="button" data-value="rarely">Rarely</button>
-                <button type="button" data-value="sometimes">Sometimes</button>
-                <button type="button" data-value="often">Often</button>
-            </div>
-
-            <!-- Question 14 -->
-            <label>14)Do you feel that you have a sense of purpose today?</label>
-            <div class="button-group" data-question="purpose">
-                <button type="button" data-value="yes">Yes</button>
-                <button type="button" data-value="no">No</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 15 -->
-            <label>15)How often do you practice self-care?</label>
-            <div class="button-group" data-question="self_care">
-                <button type="button" data-value="daily">Daily</button>
-                <button type="button" data-value="weekly">Weekly</button>
-                <button type="button" data-value="never">Never</button>
-            </div>
-
-            <!-- Question 16 -->
-            <label>16)How connected do you feel with your emotions today?</label>
-            <div class="button-group" data-question="emotionally_connected">
-                <button type="button" data-value="connected">Connected</button>
-                <button type="button" data-value="disconnected">Disconnected</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 17 -->
-            <label>17)How confident are you about the future?</label>
-            <div class="button-group" data-question="confidence">
-                <button type="button" data-value="confident">Confident</button>
-                <button type="button" data-value="uncertain">Uncertain</button>
-                <button type="button" data-value="pessimistic">Pessimistic</button>
-            </div>
-
-            <!-- Question 18 -->
-            <label>18)How much do you enjoy your hobbies and activities?</label>
-            <div class="button-group" data-question="hobbies">
-                <button type="button" data-value="enjoy">Enjoy</button>
-                <button type="button" data-value="bored">Bored</button>
-                <button type="button" data-value="neutral">Neutral</button>
-            </div>
-
-            <!-- Question 19 -->
-            <label>19)How often do you feel grateful?</label>
-            <div class="button-group" data-question="grateful">
-                <button type="button" data-value="frequently">Frequently</button>
-                <button type="button" data-value="rarely">Rarely</button>
-                <button type="button" data-value="never">Never</button>
-            </div>
-
-            <!-- Question 20 -->
-            <label>20)How grateful are you feeling today?</label>
-            <div class="button-group" data-question="gratitude">
-                <button type="button" data-value="grateful">Grateful</button>
-                <button type="button" data-value="neutral">Neutral</button>
-                <button type="button" data-value="ungrateful">Ungrateful</button>
-            </div>
-
-            <button type="button" id="submit-btn">Submit</button>
-        </form>
-
-        <div id="result" style="display: none;"></div>
+    <!-- Hero Section -->
+    <div class="hero-container">
+        <img src="FR12.jpg" alt="Background Image"> <!-- Replace with your image path -->
+        <div class="hero-text">
+            <h1>FeelSync</h1>
+            <p>Your Emotional Health Companion</p>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Mood Tracker & Mental Health Analysis Section -->
+    <div class="flex-container left-image">
+        <img src="img1.webp" alt="Mood Icon"> <!-- Replace with your image path -->
+        <div class="content">
+            <h2 style="font-size: 2.25em; color: #010101;">MoodSync: Track, Reflect, and Transform Your Emotional Well-Being</h2>
+            <p style="font-size: 1em; color: #555555;">Track your emotions, reflect on your moods, and receive personalized activities and exercises to boost your emotional health. FeelSync’s mood tracker helps you understand and improve your mental well-being.</p>
+            <a href="./sethu/templates/mental_health.html">Learn More</a>
+        </div>
+    </div>
+
+    <!-- ADHD Task Management for Kids Section -->
+    <div class="flex-container right-image">
+        <div class="content">
+            <h2 style="font-size: 2.25em; color: #010101;">FocusBoost: Empowering ADHD Kids to Stay on Track</h2>
+            <p style="font-size: 1em; color: #555555;">Helping kids with ADHD stay focused and organized. With TaskMaster, they can manage their tasks and routines easily, leading to a more structured and productive day.</p>
+            <a href="./adhd/adhd.html">Learn More</a>
+        </div>
+        <img src="img2.jpg" alt="Focus Icon"> <!-- Replace with your image path -->
+    </div>
+
+    <!-- Dyslexia Support for Kids Section -->
+    <div class="flex-container left-image">
+        <img src="img3.avif" alt="Read Icon"> <!-- Replace with your image path -->
+        <div class="content">
+            <h2 style="font-size: 2.25em; color: #010101;">ReadEasy: Empowering Dyslexic Kids with Confidence</h2>
+            <p style="font-size: 1em; color: #555555;">ReadEasy helps children with dyslexia improve their reading and comprehension skills in a fun, engaging way. With personalized resources, children gain confidence in their literacy journey.</p>
+            <a href="./mindcare/index.html">Learn More</a>
+        </div>
+    </div>
+
+
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+
 </body>
 </html>

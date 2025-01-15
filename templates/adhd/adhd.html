@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHD Aid</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Ensure horizontal layout for icons */
+    .icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px; /* Spacing between icons */
+      margin-top: 20px;
+    }
+
+    .icon-item {
+      text-align: center;
+      cursor: pointer;
+      width: 100px;
+    }
+
+    .section-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .icon-item:hover {
+      transform: scale(1.1); /* Zoom effect on hover */
+      transition: 0.3s;
+    }
+
+    /* Styling for app container */
+    .app-container {
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    /* Section content padding */
+    .section-content {
+      padding: 20px;
+    }
+
+    /* Ensure the iframe inside focus timer has proper styling */
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Mindpace</h1>
+    <h2>Specially generated for people suffering from ADHD</h2>
+  </div>
+
+  <!-- Horizontal Table for Icons -->
+  <div class="icons-row">
+    <div class="icon-item" data-id="task-manager">
+      <img src="task.png" alt="Task Manager Icon" class="section-icon" />
+      <h2>Task Manager</h2>
+    </div>
+    <div class="icon-item" data-id="focus-timer">
+      <img src="timer.jpg" alt="Focus Timer Icon" class="section-icon" />
+      <h2>Focus Timer</h2>
+    </div>
+    <div class="icon-item" data-id="notes">
+      <img src="notes.png" alt="Notes Icon" class="section-icon" />
+      <h2>Notes</h2>
+    </div>
+    <div class="icon-item" data-id="calendar-schedules">
+      <img src="calender.png" alt="Calendar & Schedule Icon" class="section-icon" />
+      <h2>Calendar & Schedules</h2>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="app-container">
+    <div class="section" id="task-manager-section">
+      <div class="section-content">
+        <h2>Task Manager</h2>
+        <ul id="task-list"></ul>
+        <input type="text" id="task-input" placeholder="Enter a task" />
+        <button id="add-task">Add Task</button>
+      </div>
+    </div>
+
+    <!-- Focus Timer Section -->
+    <div class="section" id="focus-timer-section">
+      <div class="section-content">
+        <h2>Pomofocus Timer</h2>
+        <iframe src="https://pomofocus.io/" width="600" height="400" style="border:none;"></iframe>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="section" id="notes-section">
+      <div class="section-content">
+        <h2>Notes</h2>
+        <textarea id="note-input" placeholder="Write a quick note..."></textarea>
+        <button id="save-note">Save Note</button>
+        <ul id="notes-list"></ul>
+      </div>
+    </div>
+
+    <div class="section" id="calendar-schedules-section">
+      <div class="section-content">
+        <h2>Calendar & Schedules</h2>
+        <p>Manage your calendar and schedule events here.</p>
+        <a href="https://onlinenotepad.org/app">
+          <img src="Untitled design.gif" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Section after Calendar & Schedules -->
+  <div class="section" id="image-section">
+    <div class="section-content">
+      <h2>Our Image Section</h2>
+      <img src="{{ url_for('static', filename='your-image.jpg') }}" alt="Description of the image" class="section-image" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

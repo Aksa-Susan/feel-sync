@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Check-In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="survey">
+        <h1>Daily Mental Health Check-In</h1>
+        <form id="checkin-form">
+            <!-- Question 1 -->
+            <label>1)How are you feeling today?</label>
+            <div class="button-group" data-question="feeling">
+                <button type="button" data-value="good">Good</button>
+                <button type="button" data-value="bad">Bad</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 2 -->
+            <label>2)What's your mood like?</label>
+            <div class="button-group" data-question="mood">
+                <button type="button" data-value="happy">Happy</button>
+                <button type="button" data-value="sad">Sad</button>
+                <button type="button" data-value="stressed">Stressed</button>
+            </div>
+
+            <!-- Question 3 -->
+            <label>3)How much stress are you feeling today?</label>
+            <div class="button-group" data-question="stress">
+                <button type="button" data-value="none">None</button>
+                <button type="button" data-value="low">Low</button>
+                <button type="button" data-value="high">High</button>
+            </div>
+
+            <!-- Question 4 -->
+            <label>4)How well did you sleep last night?</label>
+            <div class="button-group" data-question="sleep">
+                <button type="button" data-value="well">Well</button>
+                <button type="button" data-value="average">Average</button>
+                <button type="button" data-value="poorly">Poorly</button>
+            </div>
+
+            <!-- Question 5 -->
+            <label>5)Are you feeling physically energized?</label>
+            <div class="button-group" data-question="energy">
+                <button type="button" data-value="energized">Energized</button>
+                <button type="button" data-value="tired">Tired</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 6 -->
+            <label>6)Have you been able to focus today?</label>
+            <div class="button-group" data-question="focus">
+                <button type="button" data-value="yes">Yes</button>
+                <button type="button" data-value="no">No</button>
+                <button type="button" data-value="somewhat">Somewhat</button>
+            </div>
+
+            <!-- Question 7 -->
+            <label>7)Do you feel supported by those around you?</label>
+            <div class="button-group" data-question="support">
+                <button type="button" data-value="yes">Yes</button>
+                <button type="button" data-value="no">No</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 8 -->
+            <label>8)How do you feel about your work or studies today?</label>
+            <div class="button-group" data-question="work">
+                <button type="button" data-value="productive">Productive</button>
+                <button type="button" data-value="unproductive">Unproductive</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 9 -->
+            <label>9)How satisfied are you with your physical health?</label>
+            <div class="button-group" data-question="physical_health">
+                <button type="button" data-value="satisfied">Satisfied</button>
+                <button type="button" data-value="unsatisfied">Unsatisfied</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 10 -->
+            <label>10)Are you experiencing any anxiety today?</label>
+            <div class="button-group" data-question="anxiety">
+                <button type="button" data-value="none">None</button>
+                <button type="button" data-value="mild">Mild</button>
+                <button type="button" data-value="severe">Severe</button>
+            </div>
+
+            <!-- Question 11 -->
+            <label>11)How would you rate your happiness today?</label>
+            <div class="button-group" data-question="happiness">
+                <button type="button" data-value="happy">Happy</button>
+                <button type="button" data-value="neutral">Neutral</button>
+                <button type="button" data-value="unhappy">Unhappy</button>
+            </div>
+
+            <!-- Question 12 -->
+            <label>12)Are you feeling connected with others?</label>
+            <div class="button-group" data-question="connected">
+                <button type="button" data-value="connected">Connected</button>
+                <button type="button" data-value="isolated">Isolated</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 13 -->
+            <label>13)How often do you feel overwhelmed?</label>
+            <div class="button-group" data-question="overwhelmed">
+                <button type="button" data-value="rarely">Rarely</button>
+                <button type="button" data-value="sometimes">Sometimes</button>
+                <button type="button" data-value="often">Often</button>
+            </div>
+
+            <!-- Question 14 -->
+            <label>14)Do you feel that you have a sense of purpose today?</label>
+            <div class="button-group" data-question="purpose">
+                <button type="button" data-value="yes">Yes</button>
+                <button type="button" data-value="no">No</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 15 -->
+            <label>15)How often do you practice self-care?</label>
+            <div class="button-group" data-question="self_care">
+                <button type="button" data-value="daily">Daily</button>
+                <button type="button" data-value="weekly">Weekly</button>
+                <button type="button" data-value="never">Never</button>
+            </div>
+
+            <!-- Question 16 -->
+            <label>16)How connected do you feel with your emotions today?</label>
+            <div class="button-group" data-question="emotionally_connected">
+                <button type="button" data-value="connected">Connected</button>
+                <button type="button" data-value="disconnected">Disconnected</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 17 -->
+            <label>17)How confident are you about the future?</label>
+            <div class="button-group" data-question="confidence">
+                <button type="button" data-value="confident">Confident</button>
+                <button type="button" data-value="uncertain">Uncertain</button>
+                <button type="button" data-value="pessimistic">Pessimistic</button>
+            </div>
+
+            <!-- Question 18 -->
+            <label>18)How much do you enjoy your hobbies and activities?</label>
+            <div class="button-group" data-question="hobbies">
+                <button type="button" data-value="enjoy">Enjoy</button>
+                <button type="button" data-value="bored">Bored</button>
+                <button type="button" data-value="neutral">Neutral</button>
+            </div>
+
+            <!-- Question 19 -->
+            <label>19)How often do you feel grateful?</label>
+            <div class="button-group" data-question="grateful">
+                <button type="button" data-value="frequently">Frequently</button>
+                <button type="button" data-value="rarely">Rarely</button>
+                <button type="button" data-value="never">Never</button>
+            </div>
+
+            <!-- Question 20 -->
+            <label>20)How grateful are you feeling today?</label>
+            <div class="button-group" data-question="gratitude">
+                <button type="button" data-value="grateful">Grateful</button>
+                <button type="button" data-value="neutral">Neutral</button>
+                <button type="button" data-value="ungrateful">Ungrateful</button>
+            </div>
+
+            <button type="button" id="submit-btn">Submit</button>
+        </form>
+
+        <div id="result" style="display: none;"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

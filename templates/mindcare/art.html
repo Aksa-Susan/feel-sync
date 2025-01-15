@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Practice Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .character-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .character-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .character-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Specific colors for alphabets and numbers */
+        .alphabet {
+            background-color: #e55711;
+            color: white;
+        }
+
+        .alphabet:hover {
+            background-color: #cf3709;
+        }
+
+        .number {
+            background-color: #e5920e;
+            color: white;
+        }
+
+        .number:hover {
+            background-color: #e46d0b;
+        }
+
+        .container {
+            display: flex;
+            width: 95%;
+            max-width: 1200px;
+            gap: 20px;
+        }
+
+        .display-area {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            height: 400px;
+        }
+
+        .display-area span {
+            font-size: 150px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .drawing-board-container {
+            width: 75%;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        canvas {
+            width: 100%;
+            height: 400px;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .controls button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .controls button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Writing Practice Platform</h1>
+    <div class="character-buttons" id="character-buttons">
+        <!-- Alphabet and number buttons will be dynamically added -->
+    </div>
+    <div class="container">
+        <div class="display-area" id="display-area">
+            <!-- Selected character will be shown here -->
+            <span id="character">A</span>
+        </div>
+        <div class="drawing-board-container">
+            <canvas id="drawing-board"></canvas>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="clearBoard()">Clear Board</button>
+        <button onclick="saveDrawing()">Save Drawing</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawing-board');
+        const ctx = canvas.getContext('2d');
+        const characterDisplay = document.getElementById('character');
+        const characterButtons = document.getElementById('character-buttons');
+
+        // Set up canvas dimensions
+        canvas.width = canvas.parentElement.clientWidth - 10;
+        canvas.height = 400;
+
+        // Initialize drawing state
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Drawing functions
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mouseup', () => (isDrawing = false));
+        canvas.addEventListener('mouseout', () => (isDrawing = false));
+
+        // Clear canvas
+        function clearBoard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Save drawing
+        function saveDrawing() {
+            const link = document.createElement('a');
+            link.download = 'drawing.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Create alphabet and number buttons
+        function createCharacterButtons() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            for (const char of characters) {
+                const button = document.createElement('button');
+                button.textContent = char;
+                button.className = isNaN(char) ? 'alphabet' : 'number';
+                button.onclick = () => displayCharacter(char);
+                characterButtons.appendChild(button);
+            }
+        }
+
+        // Display selected character
+        function displayCharacter(char) {
+            characterDisplay.textContent = char;
+        }
+
+        // Initialize character buttons
+        createCharacterButtons();
+    </script>
+</body>
+</html>

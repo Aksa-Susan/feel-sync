@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindpace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add the CSS for the GIF */
+        #loadingGif {
+            display: none;  /* Initially hidden */
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Style for the icons */
+        .icon-item {
+            cursor: pointer;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .icon-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover; /* Ensure the image fits inside the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mindpace</h1>
+        <h2>Specially generated for people suffering from ADHD</h2>
+    </div>
+
+    <div class="icons-row">
+        <div class="icon-item" id="calendar-schedules" onclick="showLoadingGif()">
+            <img src="{{ url_for('static', filename='images/calender.png') }}" alt="Calendar & Schedule Icon">
+            <h2>Calendar & Schedules</h2>
+        </div>
+        <!-- Other icons here -->
+    </div>
+
+    <!-- Loading GIF -->
+    <div id="loadingGif">
+        <img src="{{ url_for('static', filename='images/final-cal.gif') }}" alt="Loading...">
+    </div>
+
+    <script>
+        // Function to show the loading GIF
+        function showLoadingGif() {
+            // Log to ensure the function is triggered
+            console.log("Calendar icon clicked!");
+            
+            // Show the GIF
+            document.getElementById('loadingGif').style.display = 'block';
+
+            // Simulate a delay before hiding the GIF and showing content
+            setTimeout(function() {
+                // Hide the GIF after the operation is completed
+                document.getElementById('loadingGif').style.display = 'none';
+
+                // Optional: You can add the action here (e.g., display the calendar or navigate to another page)
+                alert("Calendar & Schedule loaded!");
+            }, 2000); // 2 seconds delay for demonstration
+        }
+    </script>
+</body>
+</html>

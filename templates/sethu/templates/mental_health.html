@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Analyzer</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(235, 233, 233); /* Set the background color to red */
+            background-image: url('images/Yellow PInk and Green Soft Watercolor No Copy Phone Wallpaper.png');  /* Test with a valid image URL */ 
+            background-size: cover; /* Ensure the image covers the entire screen */
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Make the background fixed while scrolling */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            height: 100vh; /* Ensure the body takes the full height of the viewport */
+        }
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 700px; /* You can adjust the height as per requirement */
+            margin-bottom: 10px; /* Space between video and first section */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Center Aligning the headings */
+        h1 {
+            color: #2a2a2c;
+            font-weight: bold;
+            text-align: center;
+        }
+         h2 {
+            color: #2f8570;
+            font-weight: bold;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4.5em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section {
+            background-color: #b2b0b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 70px; /* Increased space between sections */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .nature-sounds-section {
+            background-image: url('images/Colorful Watercolor Floral Background Instagram Story.png');
+            max-width: 800px; /* Decrease the width */
+            margin: 0 auto; /* Center align the section */
+            padding: 20px;
+        }
+
+        /* Breathing Exercise Section */
+        .breathing-exercise-section {
+            background-image: url('images/Brown Pastel Watercolor Flower Aesthetic Background Instagram Story.png');
+            max-width: 800px; /* Decrease the width of the section */
+            margin: 60px auto 0; /* Add more space above and center it */
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+        }
+
+        .mood-music-section {
+            background-image: url('images/Blue and White Floral Watercolor Phone Wallpaper.png');
+            max-width: 800px; /* Decrease the width of the section */
+            margin: 60px auto 0; /* Add more space above and center it */
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better appearance */
+        }
+
+        /* Stress Mention Section */
+        .stress-mention-section {
+            background-image: url('images/Brown Pastel Watercolor Flower Aesthetic Background Instagram Story.png'); /* Add background image */
+            background-size: cover; /* Ensure the background image covers the section */
+            background-position: center; /* Center the background image */
+            max-width: 800px; /* Make the width smaller */
+            margin: 60px auto 0; /* Center the section and add space above */
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for appearance */
+            border-radius: 10px; /* Optional rounded corners */
+        }
+
+        /* Circle shaped images for nature sounds */
+        .audio-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid #00796b;
+            transition: transform 0.3s ease;
+        }
+
+        .audio-image:hover {
+            transform: scale(1.1);
+        }
+
+        /* MindFriend Interaction Section */
+        .mindfriend-interaction-section {
+            background-image: url('images/Blue and White Floral Watercolor Phone Wallpaper.png'); /* Add your background image URL here */
+            background-size: cover; /* Ensures the background image covers the entire container */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            max-width: 800px;
+            margin: 60px auto 70px; /* Added more space between this section and the next one */
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .mindfriend-interaction-section h2 {
+            color: #062633; /* Changed to white for better contrast against the background */
+        }
+
+        .mindfriend-interaction-section p {
+            color: #2f3032; /* Lighter text color for better readability */
+        }
+
+        /* GIF Container styling */
+        .gif-container img {
+            width: 100%;
+            max-width: 400px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gif-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .back-button:hover {
+            background-color: #028d5e;
+        }
+
+        .mood-selector-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            iframe {
+                height: 300px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .section {
+                padding: 15px;
+            }
+        }
+
+        /* Centering Audio Player */
+        .audio-player-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 80%; /* Make the audio player 80% of the container's width */
+            max-width: 800px; 
+        }
+
+        .audio-player {
+            width: 80%; /* Make the audio player 80% of the container's width */
+            max-width: 800px; /* Set a maximum width for the audio player */
+        }
+
+        /* New Mood Tracker Section */
+        .mood-tracker-section {
+    background-image: url('images/Brown Pastel Watercolor Flower Aesthetic Background Instagram Story.png'); /* Background image URL */
+    background-size: cover; /* Ensure the background image covers the section */
+    background-position: center; /* Center the background image */
+    border-radius: 10px;
+    padding: 30px;
+    margin: 0 auto 30px auto; /* Center the container horizontally */
+    max-width: 800px; /* Set a maximum width for the container */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff; /* White text for better contrast */
+}
+
+.mood-tracker-section h2 {
+    font-size: 2em;
+    color: #4e2e04;
+}
+
+.mood-tracker-section p {
+    font-size: 1.2em;
+    color: #9f4b4b;
+}
+
+.mood-tracker-section button {
+    background-color: #00796b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.mood-tracker-section button:hover {
+    background-color: #028d5e;
+}
+
+.book-section {
+    background-image: url('images/Colorful Watercolor Floral Background Instagram Story.png'); /* Background image URL */
+    background-size: cover; /* Ensure the background image covers the section */
+    background-position: center; /* Center the background image */
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 30px; /* Adds space above the book section */
+    margin-bottom: 30px; /* Adds space below the book section */
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff; /* White text for better contrast */
+    margin-left: auto; /* Center the section horizontally */
+    margin-right: auto; /* Center the section horizontally */
+    display: block; /* Ensure it's a block element */
+}
+
+
+
+.book-section h2 {
+    font-size: 2em;
+    color: #4e2e04;
+}
+
+.book-section p {
+    font-size: 1.2em;
+    color: #9f4b4b;
+}
+
+.book-container {
+    margin-top: 20px;
+}
+
+.book-image {
+    width: 100%;
+    max-width: 300px; /* Limit the width of the book image */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.book-image:hover {
+    transform: scale(1.05);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Video Section -->
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src='images/Colorful Simple Illustrative Identifying Signs of Mental Health Presentation.mp4' type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1>Mental Health Analyzer</h1>
+    
+    <!-- MindFriend Interaction Section -->
+    <div class="section mindfriend-interaction-section">
+        <h2>Interact with MindFriend </h2>
+
+        <p>Chat with MindFriend, an AI chatbot, to help you manage your stress and emotions. It’s here to listen and guide you toward a more relaxed and calm state.</p>
+        <a href="https://poe.com/MindFriend" target="_blank">Chat with Us</a>
+        <!-- GIF Image that links to Poe.com -->
+        <div class="gif-container">
+            <img src="images/dancebot3.gif" alt="MindFriend Chatbot" onclick="window.open('https://poe.com/MindFriend', '_blank')">
+            
+        </div>
+    </div>
+     
+
+    
+   <!-- Mood Tracker Section -->
+<div class="section mood-tracker-section">
+    <h2>Mood Tracker</h2>
+    <p>Track your mood and get insights on how you're feeling. This helps you understand your mental state.</p>
+    
+    <!-- Insert the image above the button -->
+    <img src="images/emoji.png" alt="Mood Emoji" style="width: 300px; height: 200px; margin-bottom: 40px;">
+    
+    <!-- Center the button and add space below the image -->
+    <button onclick="window.location.href='index.html'" style="display: block; margin-left: auto; margin-right: auto; margin-top: 30px;">Go to Mood Tracker</button>
+</div>
+
+
+    <!-- Nature Sounds Section -->
+    <div class="section nature-sounds-section">
+        <h2>Listen to Nature Sounds</h2>
+        <p>Relax with soothing sounds of nature to help you clear your mind.</p>
+
+        <!-- Circular images representing different nature sounds -->
+        <div style="text-align: center;">
+            <img src='images/bird.jpg' alt="Bird Chirping" class="audio-image" onclick="toggleAudio('bird')">
+            <img src="images/what_is_a_river.jpg" alt="River Sound" class="audio-image" onclick="toggleAudio('river')">
+            <img src="images/what-is-rain-960x640.jpg" alt="Rain Sound" class="audio-image" onclick="toggleAudio('rain')">
+        </div>
+    </div>
+
+    <!-- Breathing Exercise Section -->
+    <div class="section breathing-exercise-section">
+        <h2>Breathing Exercise</h2>
+        <p>Take a deep breath in, hold it for a few seconds, and then exhale slowly.</p>
+        
+        <iframe src="https://xhalr.com/" width="800" height="600"></iframe>
+        <div id="breathing-instruction" style="margin-top: 10px;"></div>
+    </div>
+
+    <!-- Music Based on Mood Section -->
+    <div class="section mood-music-section">
+        <h2>Music According to Your Mood</h2>
+        <p>Select your current mood, select your lofi.</p>
+        <div class="mood-selector-container">
+            <select id="mood-selector" class="mood-selector">
+                <option value="calm">Calm</option>
+                <option value="happy">Relax</option>
+                <option value="energized">Sleep</option>
+            </select>
+            <button onclick="playMoodMusic()">Play Music</button>
+        </div>
+        
+        <!-- Audio Player Container -->
+        <div class="audio-player-container">
+            <audio id="mood-music" class="audio-player" controls>
+                <source id="mood-music-source" src="" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+     <!-- Stress Mention Section -->
+     <div class="section stress-mention-section">
+        <h2>Stress...?</h2>
+        <p>Mention down your stressful task and find a way to release your stress.</p>
+        <iframe src="https://www.pixelthoughts.co/" width="800" height="700"></iframe>
+    </div>
+
+    <!-- Book Section -->
+<div class="section book-section">
+    <h2>Books for Mental Health</h2>
+    <p>Explore these insightful books that can help you in your mental health journey.</p>
+
+    <!-- Book Image that links to PDF -->
+    <div class="book-container">
+        <a href="mori.pdf" target="_blank">
+            <img src="images/book.jpg" alt="Book Cover" class="book-image">
+        </a>
+    </div>
+</div>
+
+
+    <br>
+    <a href="{{ url_for('\MindCare\templates\home.html') }}" class="back-button">Back to Dashboard</a>
+
+    <script>
+        // Audio tracks for nature sounds
+        const birdSound = new Audio('bird.mp3');
+        const riverSound = new Audio('river.mp3');
+        const rainSound = new Audio('raining.mp3');
+
+        // Function to toggle audio play/pause when image is clicked
+        function toggleAudio(sound) {
+            // Stop all audio players
+            birdSound.pause();
+            riverSound.pause();
+            rainSound.pause();
+
+            // Reset all audio players to the start
+            birdSound.currentTime = 0;
+            riverSound.currentTime = 0;
+            rainSound.currentTime = 0;
+
+            // Toggle play/pause for the clicked audio
+            if (sound === 'bird') {
+                birdSound.paused ? birdSound.play() : birdSound.pause();
+            } else if (sound === 'river') {
+                riverSound.paused ? riverSound.play() : riverSound.pause();
+            } else if (sound === 'rain') {
+                rainSound.paused ? rainSound.play() : rainSound.pause();
+            }
+        }
+
+        // Function to play music based on mood
+        function playMoodMusic() {
+            const mood = document.getElementById("mood-selector").value;
+            const audio = document.getElementById("mood-music");
+            const musicSource = document.getElementById("mood-music-source");
+
+            if (mood === "calm") {
+                musicSource.src = "relax.mp3";
+            } else if (mood === "happy") {
+                musicSource.src = "chill.mp3";
+            } else if (mood === "energized") {
+                musicSource.src = "rain.mp3";
+            }
+            
+            audio.load(); // Reload the audio element with the new source
+            audio.play();
+        }
+
+        
+    </script>
+
+</body>
+</html>
